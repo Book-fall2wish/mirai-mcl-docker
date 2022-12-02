@@ -55,7 +55,7 @@ CMD ./mcl
 
 **运行镜像**
 
-由于mcl的I/O比较奇怪~~（不太会I/O知识）~~，暂无法做到对一个mcl容器的多次I/O链接，故mcl容器的运行如下：
+由于mcl的I/O比较奇怪 ~~（不太会I/O知识）~~ ，暂无法做到对一个mcl容器的多次I/O链接，故mcl容器的运行如下：
 
 * 需要在控制台交互操作mcl时，运行`docker run -it --name mcl -v mcl:/home/mirai mcl:2.1.2` 
 * 不需要交互操作，仅需mcl后台执行即可时，运行`docker run -d --name mcl -v mcl:/home/mirai mcl:2.1.2`
