@@ -59,7 +59,7 @@ CMD ./mcl
 
 * 需要在控制台交互操作mcl时，运行`docker run -it --name mcl -v mcl:/home/mirai mcl:2.1.2` 
 * 不需要交互操作，仅需mcl后台执行即可时，运行`docker run -d --name mcl -v mcl:/home/mirai mcl:2.1.2`
-* 需要重启容器时，先停止容器`exit`或`docker stop mcl`（视启动方式而定），再删除容器`docker rm mcl`，最后运行镜像启动容器`docker run -it/-d --name mcl -v mcl:/home/mirai mcl:2.1.2`；由于有volume持久化，所以容器被删除重建也不影响后续运行
+* 需要重启容器时，先停止容器`stop`或`docker stop mcl`（视启动方式而定），再删除容器`docker rm mcl`，最后运行镜像启动容器`docker run -it/-d --name mcl -v mcl:/home/mirai mcl:2.1.2`；由于有volume持久化，所以容器被删除重建也不影响后续运行
 
 &nbsp;
 
