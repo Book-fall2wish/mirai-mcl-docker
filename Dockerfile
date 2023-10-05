@@ -25,13 +25,6 @@ RUN cd $BASE_PATH && \
     rm -rf /var/lib/apt/lists/* && \
 
     # Initial start
-    while true; do
-    # 使用grep命令检查标准输出是否包含/bili文本
-    if ./mcl | grep -q "/bili"; then
-        echo 'stop' | ./mcl
-        break
-    fi
-    sleep 1
-    done    
+    while true; do;if ./mcl | grep -q "/bili"; then; echo 'stop' | ./mcl; break; fi; sleep 1; done    
 
 CMD ["sleep", "./mcl"]
