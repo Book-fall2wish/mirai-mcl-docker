@@ -27,4 +27,4 @@ RUN cd $BASE_PATH && \
     # Initial start
 RUN ./mcl -z
 
-CMD ["sleep", "./mcl"]
+CMD ["./mcl"]
