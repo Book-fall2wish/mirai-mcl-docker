@@ -25,6 +25,6 @@ RUN cd $BASE_PATH && \
     rm -rf /var/lib/apt/lists/*
 
     # Initial start
-RUN stdbuf -oL -eL ./mcl | while IFS= read -r line; do echo "$line"; [[ "$line" == *初始化分组失败* ]] && echo 'stop' | ./mcl && break; done
+RUN echo 'stop' | ./mcl
 
 CMD ["sleep", "./mcl"]
