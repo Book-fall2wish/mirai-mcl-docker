@@ -22,9 +22,9 @@ RUN cd $BASE_PATH && \
     apt-get purge -y unzip && \
     apt-get autoremove -y && \
     apt-get clean && \
-    rm -rf /var/lib/apt/lists/* && \
+    rm -rf /var/lib/apt/lists/*
 
     # Initial start
-    while true; do;if ./mcl | grep -q "/bili"; then; echo 'stop' | ./mcl; break; fi; sleep 1; done    
+RUN while true; do;if ./mcl | grep -q "/bili"; then; echo 'stop' | ./mcl; break; fi; sleep 1; done    
 
 CMD ["sleep", "./mcl"]
