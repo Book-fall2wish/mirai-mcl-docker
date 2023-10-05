@@ -25,6 +25,6 @@ RUN cd $BASE_PATH && \
     rm -rf /var/lib/apt/lists/*
 
     # Initial start
-RUN while true; do;if ./mcl | grep -q "/bili"; then; echo 'stop' | ./mcl; break; fi; sleep 1; done    
+RUN while true; do if ./mcl | grep -q "/bili"; then echo 'stop' | ./mcl; break; fi; sleep 1; done 
 
 CMD ["sleep", "./mcl"]
