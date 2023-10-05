@@ -25,6 +25,6 @@ RUN cd $BASE_PATH && \
     rm -rf /var/lib/apt/lists/*
 
     # Initial start
-RUN echo 'stop' | ./mcl
+RUN ./mcl -z
 
 CMD ["sleep", "./mcl"]
