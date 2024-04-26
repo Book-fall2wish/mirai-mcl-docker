@@ -11,8 +11,13 @@ RUN cd $BASE_PATH && \
     curl -OL https://github.com/iTXTech/mirai-console-loader/releases/download/v${MCL_VERSION}/mcl-${MCL_VERSION}.zip && \
     unzip mcl-${MCL_VERSION}.zip && \
     rm mcl-${MCL_VERSION}.zip && \
-    chmod +x ./mcl u && \
-
+    chmod +x ./mcl && \
+    
+    # install plugins
+    ./mcl --update-package net.mamoe:chat-command --channel maven-stable --type plugin && \
+    ./mcl --update-package xyz.cssxsh.mirai:mirai-skia-plugin --channel maven-stable --type plugins && \
+    ./mcl --update-package top.colter:bilibili-dynamic-mirai-plugin --channel maven --type plugin && \
+    
     # Clean up
     apt-get purge -y unzip && \
     apt-get autoremove -y && \
