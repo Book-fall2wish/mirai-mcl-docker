@@ -11,7 +11,7 @@ RUN cd $BASE_PATH && \
     curl -OL https://github.com/iTXTech/mirai-console-loader/releases/download/v${MCL_VERSION}/mcl-${MCL_VERSION}.zip && \
     unzip mcl-${MCL_VERSION}.zip && \
     rm mcl-${MCL_VERSION}.zip && \
-    chmod +x ./mcl && \
+    chmod +x ./mcl u && \
 
     # Clean up
     apt-get purge -y unzip && \
