@@ -16,7 +16,9 @@ RUN cd $BASE_PATH && \
     ./mcl --update-package net.mamoe:chat-command --channel maven-stable --type plugin && \
     ./mcl --update-package xyz.cssxsh.mirai:mirai-skia-plugin --channel maven-stable --type plugins && \
     ./mcl --update-package top.colter:bilibili-dynamic-mirai-plugin --channel maven --type plugin && \
-    echo "/mclx update" | ./mcl && \
+    
+    # initial start
+    echo "/mclx update" | ./mcl -u --dry-run && \
     ./mcl -u && \
     
     # Clean up
