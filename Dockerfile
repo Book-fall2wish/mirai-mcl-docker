@@ -19,7 +19,6 @@ RUN cd $BASE_PATH && \
     
     # initial start
     echo "/mclx update" | ./mcl -u --dry-run && \
-    ./mcl -u && \
     
     # Clean up
     apt-get purge -y unzip && \
