@@ -18,7 +18,7 @@ RUN cd $BASE_PATH && \
     ./mcl --update-package top.colter:bilibili-dynamic-mirai-plugin --channel maven --type plugin && \
     
     # initial start
-    ./mcl -u --dry-run&& \
+    ./mcl -u --dry-run && \
     
     # Clean up
     apt-get purge -y unzip && \
