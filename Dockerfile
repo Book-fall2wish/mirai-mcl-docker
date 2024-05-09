@@ -2,7 +2,7 @@ FROM ibm-semeru-runtimes:open-17-jre-focal
 
 ENV TZ Asia/Shanghai
 ENV BASE_PATH=/home/mirai
-ENV MCL_VERSION=2.1.2
+#ENV MCL_VERSION=2.1.2
 WORKDIR $BASE_PATH
 RUN cd $BASE_PATH && \
     apt update && \
@@ -18,7 +18,7 @@ RUN cd $BASE_PATH && \
     ./mcl --update-package top.colter:bilibili-dynamic-mirai-plugin --channel maven --type plugin && \
     
     # initial start
-    echo "/mclx update" | ./mcl && \
+    ./mcl -u && \
     
     # Clean up
     apt-get purge -y unzip && \
@@ -26,4 +26,4 @@ RUN cd $BASE_PATH && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
-CMD ["./mcl"]
+CMD ["./mcl -u"]
