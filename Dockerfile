@@ -14,7 +14,8 @@ RUN apt-get update && apt-get install -y \
     wget \
     primus-libs \
     fonts-noto \
-    iputils-ping && \
+    iputils-ping \
+    expect && \
     rm -rf /var/lib/apt/lists/*
 
 # 添加字体文件
@@ -30,6 +31,9 @@ RUN wget https://github.com/google/fonts/archive/main.tar.gz -O gf.tar.gz && \
     rm -rf $PWD/fonts-main/
 
 # mcl
+# 将交互脚本复制到镜像中
+COPY interact.sh /interact.sh
+
 RUN wget https://github.com/MrXiaoM/mirai-console-loader/releases/download/v2.1.2-patch1/with-overflow.zip && \
     unzip with-overflow.zip && \
     rm with-overflow.zip && \
@@ -43,13 +47,14 @@ RUN wget https://github.com/MrXiaoM/mirai-console-loader/releases/download/v2.1.
     wget -O plugins/bilibili-dynamic-mirai-plugin-3.2.11.mirai2.jar https://github.com/Colter23/bilibili-dynamic-mirai-plugin/releases/download/v3.2.11/bilibili-dynamic-mirai-plugin-3.2.11.mirai2.jar && \
     
     # initial start
-    ./mcl -u --dry-run && \
+    #./mcl -u --dry-run && \
     
     # Clean up
     apt-get purge -y unzip && \
     apt-get autoremove -y && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
-#    ./mcl -u
+
+RUN /interact.sh
 
 CMD ["./mcl", "-u"]
