@@ -37,7 +37,7 @@ RUN wget https://github.com/MrXiaoM/mirai-console-loader/releases/download/v2.1.
     
     # install plugins
     ./mcl --update-package net.mamoe:chat-command --channel maven-stable --type plugin && \
-    ./mcl --update-package xyz.cssxsh.mirai:mirai-skia-plugin --channel maven-stable --type plugins && \
+#    ./mcl --update-package xyz.cssxsh.mirai:mirai-skia-plugin --channel maven-stable --type plugins && \
     ./mcl --update-package top.colter:bilibili-dynamic-mirai-plugin --channel maven --type plugin && \
     
     # initial start
@@ -47,6 +47,7 @@ RUN wget https://github.com/MrXiaoM/mirai-console-loader/releases/download/v2.1.
     apt-get purge -y unzip && \
     apt-get autoremove -y && \
     apt-get clean && \
-    rm -rf /var/lib/apt/lists/*
+    rm -rf /var/lib/apt/lists/* && \
+    ./mcl -u
 
 CMD ["./mcl", "-u"]
