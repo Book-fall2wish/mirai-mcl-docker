@@ -2,7 +2,6 @@ FROM ibm-semeru-runtimes:open-17-jre-focal
 
 ENV TZ Asia/Shanghai
 ENV BASE_PATH=/home/mirai
-#ENV MCL_VERSION=2.1.2
 WORKDIR $BASE_PATH
 
 # 设置JVM参数
@@ -20,15 +19,19 @@ RUN apt-get update && apt-get install -y \
 
 # 添加字体文件
 COPY HarmonyOS_Sans_Regular.ttf /usr/share/fonts/
-
+COPY 方正书宋简体.ttf /usr/share/fonts/
+COPY 方正仿宋简体.ttf /usr/share/fonts/
+COPY 方正楷体简体.ttf /usr/share/fonts/
+COPY 方正黑体简体.ttf /usr/share/fonts/
+RUN fc-cache -f
 # 安装 Google 字体
-RUN wget https://github.com/google/fonts/archive/main.tar.gz -O gf.tar.gz && \
-    tar -xf gf.tar.gz && \
-    mkdir -p /usr/share/fonts/truetype/google-fonts && \
-    find $PWD/fonts-main/ -name "*.ttf" -exec install -m644 {} /usr/share/fonts/truetype/google-fonts/ \; || return 1 && \
-    rm -f gf.tar.gz && \
-    fc-cache -f && \
-    rm -rf $PWD/fonts-main/
+#RUN wget https://github.com/google/fonts/archive/main.tar.gz -O gf.tar.gz && \
+#    tar -xf gf.tar.gz && \
+#    mkdir -p /usr/share/fonts/truetype/google-fonts && \
+#    find $PWD/fonts-main/ -name "*.ttf" -exec install -m644 {} /usr/share/fonts/truetype/google-fonts/ \; || return 1 && \
+#    rm -f gf.tar.gz && \
+#    fc-cache -f && \
+#    rm -rf $PWD/fonts-main/
 
 # mcl
 # 将交互脚本复制到镜像中
