@@ -23,6 +23,7 @@ RUN cd $BASE_PATH && \
     ./mcl -u --dry-run && \
     
     # Clean up
+    fc-cache -f && \
     apt-get purge -y unzip && \
     apt-get autoremove -y && \
     apt-get install -y iputils-ping && \
