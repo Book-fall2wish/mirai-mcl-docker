@@ -8,22 +8,29 @@ WORKDIR $BASE_PATH
 # 设置JVM参数
 ENV JAVA_TOOL_OPTIONS="-Dmirai.console.skip-end-user-readme"
 
+# 安装所需的工具
+RUN apt-get update && apt-get install -y \
+    unzip \
+    wget \
+    primus-libs \
+    fonts-noto \
+    iputils-ping && \
+    rm -rf /var/lib/apt/lists/*
+
 # 添加字体文件
 COPY HarmonyOS_Sans_Regular.ttf /usr/share/fonts/
 
-# install google fonts
-RUN wget https://github.com/google/fonts/archive/main.tar.gz -O gf.tar.gz
-RUN tar -xf gf.tar.gz
-RUN mkdir -p /usr/share/fonts/truetype/google-fonts
-RUN find $PWD/fonts-main/ -name "*.ttf" -exec install -m644 {} /usr/share/fonts/truetype/google-fonts/ \; || return 1
-RUN rm -f gf.tar.gz
-RUN fc-cache -f && rm -rf /var/cache/*
+# 安装 Google 字体
+RUN wget https://github.com/google/fonts/archive/main.tar.gz -O gf.tar.gz && \
+    tar -xf gf.tar.gz && \
+    mkdir -p /usr/share/fonts/truetype/google-fonts && \
+    find $PWD/fonts-main/ -name "*.ttf" -exec install -m644 {} /usr/share/fonts/truetype/google-fonts/ \; || return 1 && \
+    rm -f gf.tar.gz && \
+    fc-cache -f && \
+    rm -rf $PWD/fonts-main/
 
 # mcl
-RUN cd $BASE_PATH && \
-    apt update && \
-    apt install -y unzip wget primus-libs && \
-    wget https://github.com/MrXiaoM/mirai-console-loader/releases/download/v2.1.2-patch1/with-overflow.zip && \
+RUN wget https://github.com/MrXiaoM/mirai-console-loader/releases/download/v2.1.2-patch1/with-overflow.zip && \
     unzip with-overflow.zip && \
     rm with-overflow.zip && \
     chmod +x ./mcl && \
@@ -37,14 +44,9 @@ RUN cd $BASE_PATH && \
     #./mcl -u --dry-run && \
     
     # Clean up
-    fc-cache -f && \
     apt-get purge -y unzip && \
     apt-get autoremove -y && \
-    apt-get install -y iputils-ping && \
     apt-get clean && \
-    rm -rf /var/lib/apt/lists/* && \
-
-    # start to update
-    ./mcl -u
+    rm -rf /var/lib/apt/lists/*
 
 CMD ["./mcl", "-u"]
