@@ -37,8 +37,10 @@ RUN wget https://github.com/MrXiaoM/mirai-console-loader/releases/download/v2.1.
     
     # install plugins
     ./mcl --update-package net.mamoe:chat-command --channel maven-stable --type plugin && \
-#    ./mcl --update-package xyz.cssxsh.mirai:mirai-skia-plugin --channel maven-stable --type plugins && \
-    ./mcl --update-package top.colter:bilibili-dynamic-mirai-plugin --channel maven --type plugin && \
+    ./mcl --update-package xyz.cssxsh.mirai:mirai-skia-plugin --channel maven-stable --type plugins && \
+#    ./mcl --update-package top.colter:bilibili-dynamic-mirai-plugin --channel maven --type plugin && \
+    mkdir -p plugins && \
+    wget -O plugins/bilibili-dynamic-mirai-plugin-3.2.11.mirai2.jar https://github.com/Colter23/bilibili-dynamic-mirai-plugin/releases/download/v3.2.11/bilibili-dynamic-mirai-plugin-3.2.11.mirai2.jar && \
     
     # initial start
     ./mcl -u --dry-run && \
