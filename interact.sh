@@ -4,7 +4,7 @@
 spawn /home/mirai/mcl -u
 
 # 等待程序准备就绪
-expect "重连次数耗尽"
+expect "mirai-console started successfully"
 
 # 发送升级命令
 send "stop\r"
