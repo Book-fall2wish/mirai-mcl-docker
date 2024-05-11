@@ -4,6 +4,8 @@ ENV TZ Asia/Shanghai
 ENV BASE_PATH=/home/mirai
 #ENV MCL_VERSION=2.1.2
 WORKDIR $BASE_PATH
+
+COPY HarmonyOS_Sans_Regular.ttf /usr/share/fonts/
 RUN cd $BASE_PATH && \
     apt update && \
     apt install -y unzip wget primus-libs && \
