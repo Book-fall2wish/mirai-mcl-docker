@@ -41,13 +41,13 @@ RUN wget https://github.com/MrXiaoM/mirai-console-loader/releases/download/v2.1.
     ./mcl --update-package top.colter:bilibili-dynamic-mirai-plugin --channel maven --type plugin && \
     
     # initial start
-    #./mcl -u --dry-run && \
+    ./mcl -u --dry-run && \
     
     # Clean up
     apt-get purge -y unzip && \
     apt-get autoremove -y && \
     apt-get clean && \
-    rm -rf /var/lib/apt/lists/* && \
-    ./mcl -u
+    rm -rf /var/lib/apt/lists/*
+#    ./mcl -u
 
 CMD ["./mcl", "-u"]
