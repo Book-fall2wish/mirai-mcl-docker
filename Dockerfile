@@ -27,4 +27,4 @@ RUN cd $BASE_PATH && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
-CMD ["./mcl -u"]
+CMD ["./mcl", "-u"]
