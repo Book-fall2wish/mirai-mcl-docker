@@ -5,7 +5,12 @@ ENV BASE_PATH=/home/mirai
 #ENV MCL_VERSION=2.1.2
 WORKDIR $BASE_PATH
 
+# 设置JVM参数
+ENV JAVA_TOOL_OPTIONS="-Dmirai.console.skip-end-user-readme"
+
+# 添加字体文件
 COPY HarmonyOS_Sans_Regular.ttf /usr/share/fonts/
+
 RUN cd $BASE_PATH && \
     apt update && \
     apt install -y unzip wget primus-libs && \
@@ -29,5 +34,8 @@ RUN cd $BASE_PATH && \
     apt-get install -y iputils-ping && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
+
+    # start to update
+    ./mcl -u
 
 CMD ["./mcl", "-u"]
