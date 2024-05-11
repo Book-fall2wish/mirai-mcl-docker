@@ -52,7 +52,8 @@ RUN wget https://github.com/MrXiaoM/mirai-console-loader/releases/download/v2.1.
     
     # initial start
     #./mcl -u --dry-run && \
-    expect /interact.sh
+    
+RUN expect /interact.sh
     
     # Clean up
 RUN apt-get purge -y unzip expect && \
