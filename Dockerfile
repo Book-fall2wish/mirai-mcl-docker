@@ -11,6 +11,15 @@ ENV JAVA_TOOL_OPTIONS="-Dmirai.console.skip-end-user-readme"
 # 添加字体文件
 COPY HarmonyOS_Sans_Regular.ttf /usr/share/fonts/
 
+# install google fonts
+RUN wget https://github.com/google/fonts/archive/main.tar.gz -O gf.tar.gz
+RUN tar -xf gf.tar.gz
+RUN mkdir -p /usr/share/fonts/truetype/google-fonts
+RUN find $PWD/fonts-main/ -name "*.ttf" -exec install -m644 {} /usr/share/fonts/truetype/google-fonts/ \; || return 1
+RUN rm -f gf.tar.gz
+RUN fc-cache -f && rm -rf /var/cache/*
+
+# mcl
 RUN cd $BASE_PATH && \
     apt update && \
     apt install -y unzip wget primus-libs && \
