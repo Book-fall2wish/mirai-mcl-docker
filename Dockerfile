@@ -33,6 +33,7 @@ RUN wget https://github.com/google/fonts/archive/main.tar.gz -O gf.tar.gz && \
 # mcl
 # 将交互脚本复制到镜像中
 COPY interact.sh /interact.sh
+RUN chmod +x /interact.sh
 
 RUN wget https://github.com/MrXiaoM/mirai-console-loader/releases/download/v2.1.2-patch1/with-overflow.zip && \
     unzip with-overflow.zip && \
@@ -48,13 +49,14 @@ RUN wget https://github.com/MrXiaoM/mirai-console-loader/releases/download/v2.1.
     
     # initial start
     #./mcl -u --dry-run && \
+    /interact.sh
     
     # Clean up
-    apt-get purge -y unzip && \
+RUN apt-get purge -y unzip expect && \
     apt-get autoremove -y && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
+    rm /interact.sh
 
-RUN /interact.sh
 
 CMD ["./mcl", "-u"]
