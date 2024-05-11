@@ -55,7 +55,7 @@ RUN wget https://github.com/MrXiaoM/mirai-console-loader/releases/download/v2.1.
 RUN apt-get purge -y unzip expect && \
     apt-get autoremove -y && \
     apt-get clean && \
-    rm -rf /var/lib/apt/lists/*
+    rm -rf /var/lib/apt/lists/* && \
     rm /interact.sh
 
 
