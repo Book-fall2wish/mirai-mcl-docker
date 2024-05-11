@@ -33,7 +33,7 @@ RUN cd $BASE_PATH && \
     apt-get autoremove -y && \
     apt-get install -y iputils-ping && \
     apt-get clean && \
-    rm -rf /var/lib/apt/lists/*
+    rm -rf /var/lib/apt/lists/* && \
 
     # start to update
     ./mcl -u
