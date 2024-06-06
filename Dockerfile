@@ -33,9 +33,9 @@ RUN fc-cache -f
 #    fc-cache -f && \
 #    rm -rf $PWD/fonts-main/
 # 设定中文环境UTF8
-RUN bash -c 'echo -e "en_US.UTF-8 UTF-8\nzh_CN.UTF-8 UTF-8" >> /etc/locale.gen' && \
+RUN echo -e "en_US.UTF-8 UTF-8\nzh_CN.UTF-8 UTF-8" >> /etc/locale.gen && \
     locale-gen &&\
-    sudo bash -c 'echo -e "LANG=zh_CN.UTF-8\nLC_ALL=zh_CN.UTF-8" > /etc/default/locale'
+    echo -e "LANG=zh_CN.UTF-8\nLC_ALL=zh_CN.UTF-8" > /etc/default/locale
 # mcl
 # 将交互脚本复制到镜像中
 COPY interact.sh /interact.sh
