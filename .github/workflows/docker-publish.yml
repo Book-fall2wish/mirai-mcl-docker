@@ -1,8 +1,8 @@
 name: Publish Docker image
 
 on:
-  release:
-    types: ['v*.*.*']
+#  release:
+#    types: ['v*.*.*']
   schedule:
     - cron: '0 0 */5 * *'
   push:
