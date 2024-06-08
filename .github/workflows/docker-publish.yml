@@ -7,7 +7,7 @@ on:
     - cron: '0 0 */5 * *'
   push:
     branches: [ "main" ]
-    tags: [ 'v*.*.*' ]
+    tags: [ 'latest' ]
 
 jobs:
   push_to_registries:
