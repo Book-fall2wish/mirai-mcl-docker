@@ -27,7 +27,6 @@ jobs:
       id-token: write
       
     steps:
-
       - name: Check Out Repo 
         uses: actions/checkout@v4
 
