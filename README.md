@@ -28,7 +28,7 @@ networks:
     name: botnetwork
 ```
 
-# 以下为原作者内容
+# 以下为原作者gaylong9/mirai-mcl-docker内容
 ## 介绍
 
 由于更换服务器，需要重新部署Mirai，故借此机会创建Docker镜像方便后续使用。
