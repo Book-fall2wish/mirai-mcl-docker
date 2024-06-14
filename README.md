@@ -1,8 +1,13 @@
 # mirai-mcl-docker
 mcl（mirai-console-loader）的Docker镜像
 
+mirai项目地址：https://github.com/mamoe/mirai
+overflow项目地址：https://github.com/MrXiaoM/Overflow
+
+本项目仅将mirai和overflow插件整合至docker中运行
 &nbsp;
 
+#以下为原作者内容
 ## 介绍
 
 由于更换服务器，需要重新部署Mirai，故借此机会创建Docker镜像方便后续使用。
