@@ -14,6 +14,7 @@ RUN apt-get update && apt-get install -y \
     primus-libs \
     fonts-noto \
     iputils-ping \
+    libgl1-mesa-glx \
     expect && \
     rm -rf /var/lib/apt/lists/*
 
@@ -52,7 +53,7 @@ RUN wget https://github.com/MrXiaoM/mirai-console-loader/releases/download/v2.1.
 #    ./mcl --update-package top.colter:bilibili-dynamic-mirai-plugin --channel maven --type plugin && \
     mkdir -p plugins && \
     wget -O plugins/bilibili-dynamic-mirai-plugin-3.2.11.mirai2.jar https://github.com/Colter23/bilibili-dynamic-mirai-plugin/releases/download/v3.2.11/bilibili-dynamic-mirai-plugin-3.2.11.mirai2.jar
-    
+
     # initial start
     #./mcl -u --dry-run && \
     
